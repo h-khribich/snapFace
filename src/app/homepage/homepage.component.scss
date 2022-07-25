@@ -1,0 +1,22 @@
+.landing-block {
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  img {
+    width: 40%;
+    margin: 0 auto;
+  }
+}
+
+.landing-links {
+  margin-top: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+button {
+  padding: 1rem 2rem;
+  font-size: 20px;
+}
