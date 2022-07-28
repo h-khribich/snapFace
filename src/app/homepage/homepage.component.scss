@@ -1,5 +1,5 @@
 .landing-block {
-  margin: 2rem;
+  margin: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,7 +16,20 @@
   text-align: center;
 }
 
-button {
+.redirect-btn {
   padding: 1rem 2rem;
   font-size: 20px;
+}
+
+.newsletter-submit-btn {
+  font-size: 1.2rem;
+  border-radius: 5px;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  gap: 1rem;
 }

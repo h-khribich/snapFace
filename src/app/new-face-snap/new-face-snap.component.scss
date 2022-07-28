@@ -1,0 +1,84 @@
+.form-card,
+.face-snap-card {
+  box-sizing: border-box;
+  width: 50%;
+  margin: 50px auto;
+  padding: 10px 30px;
+  border-radius: 20px;
+  box-shadow: lightgray 4px 4px 20px;
+  object-fit: cover;
+  position: relative;
+}
+
+.form-card {
+  background-image: url("../../assets/misty.png");
+}
+
+.face-snap-card {
+  background-color: #decffa;
+
+  &__title {
+    margin-bottom: 0;
+  }
+
+  &__img {
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  &__createdDate,
+  &__location {
+    font-size: 0.9rem;
+    font-weight: 300;
+  }
+
+  &__description {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+}
+
+.form-group {
+  margin: 10px auto;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.new-face-snap-svg,
+.face-snap-card__svg {
+  position: absolute;
+  z-index: -1;
+}
+
+.new-face-snap-svg {
+  right: -30%;
+  top: -2rem;
+}
+
+.face-snap-card__svg {
+  left: -40%;
+  top: 5rem;
+}
+
+input,
+textarea {
+  width: 50%;
+  height: 1.5rem;
+  border: none;
+  border-radius: 5px;
+}
+
+textarea {
+  height: 4rem;
+}
+
+.action-buttons {
+  width: 100%;
+}
+
+button {
+  display: block;
+  margin: 20px auto;
+}

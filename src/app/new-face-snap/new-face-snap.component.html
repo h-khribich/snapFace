@@ -1,0 +1,53 @@
+<div class="form-card">
+  <img class="new-face-snap-svg" src="../../assets/post.svg" alt="" />
+  <h2>Nouveau faceSnap</h2>
+  <form
+    #newSnapForm="ngForm"
+    [formGroup]="faceSnapForm"
+    (ngSubmit)="onFormSubmit(faceSnapForm)"
+  >
+    <div class="form-group">
+      <label for="title">Titre</label>
+      <input type="text" id="title" formControlName="title" />
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea
+        type="text"
+        id="description"
+        formControlName="description"
+        rows="4"
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="imageUrl">ImageURL</label>
+      <input type="text" id="imageUrl" formControlName="imageUrl" />
+    </div>
+    <div class="form-group">
+      <label for="location">Location</label>
+      <input type="text" id="location" formControlName="location" />
+    </div>
+    <div class="action-buttons">
+      <button type="submit" [disabled]="faceSnapForm.invalid">
+        Enregistrer
+      </button>
+    </div>
+  </form>
+</div>
+
+<div class="face-snap-card" *ngIf="faceSnapPreview$ | async as faceSnap">
+  <img class="face-snap-card__svg" src="../../assets/addPost.svg" alt="" />
+  <h2 class="face-snap-card__title">{{ faceSnap.title | titlecase }}</h2>
+  <p class="face-snap-card__createdDate">
+    Mis en ligne {{ faceSnap.createdDate | date: "à HH:mm, le d MMMM yyyy" }}
+  </p>
+  <img
+    class="face-snap-card__img"
+    [src]="faceSnap.imageUrl"
+    [alt]="faceSnap.title"
+  />
+  <p class="face-snap-card__description">{{ faceSnap.description }}</p>
+  <p class="face-snap-card__location" *ngIf="faceSnap.location">
+    Photo prise à {{ faceSnap.location }}
+  </p>
+</div>

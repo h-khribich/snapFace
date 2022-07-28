@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { FaceSnap } from '../models/face-snap-model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FaceSnapsService {
+  constructor(private router: Router) {}
+
   faceSnaps: FaceSnap[] = [
     {
       id: 1,
@@ -83,5 +86,21 @@ export class FaceSnapsService {
   snapUnsnapById(faceSnapId: number, snapType: 'snap' | 'unsnap'): void {
     const faceSnap = this.getFaceSnapById(faceSnapId);
     snapType === 'snap' ? faceSnap.snaps++ : faceSnap.snaps--;
+  }
+
+  addNewSnapFace(formValue: {
+    title: string;
+    description: string;
+    imageUrl: string;
+    location?: string;
+  }): void {
+    const faceSnap: FaceSnap = {
+      ...formValue,
+      createdDate: new Date(),
+      snaps: 0,
+      id: this.faceSnaps[this.faceSnaps.length - 1].id + 1,
+    };
+    this.faceSnaps.push(faceSnap);
+    console.log(this.faceSnaps);
   }
 }

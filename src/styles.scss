@@ -1,16 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
 * {
-  font-family: Roboto, Helvetica, sans-serif;
+  font-family: Raleway, Helvetica, sans-serif;
   list-style-type: none;
+}
+
+:root {
+  --main-bg-color: linear-gradient(
+    60deg,
+    hsl(240deg 100% 20%) 0%,
+    hsl(304deg 100% 23%) 19%,
+    hsl(329deg 100% 36%) 37%,
+    hsl(346deg 83% 51%) 55%,
+    hsl(17deg 100% 59%) 72%,
+    hsl(40deg 100% 50%) 88%,
+    hsl(55deg 100% 50%) 100%
+  );
+
+  --primary-color: rgb(132, 193, 212);
+
+  --secondary-bg-color: #cc72b4;
+
+  --hover-transition: all 300ms ease-in-out;
 }
 
 body {
   padding: 0;
   margin: 0;
+  background-color: aliceblue;
+  color: #333;
 }
 
 button {
-  background-color: transparent;
+  background-color: var(--primary-color);
   box-sizing: border-box;
   padding: 5px 10px;
   border: none;
@@ -21,8 +42,14 @@ button {
   outline: none;
   font-size: 14px;
   font-weight: 500;
+  color: white;
+  transition: var(--hover-transition);
   &:active {
     transform: translate(1px, 1px);
     box-shadow: lightgray 0 0 5px;
+  }
+  &:hover {
+    transform: scale(1.05);
+    background-color: var(--secondary-bg-color);
   }
 }
