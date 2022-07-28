@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { FaceSnap } from '../models/face-snap-model';
 import { FaceSnapsService } from '../services/face-snaps.service';
 
@@ -10,6 +11,7 @@ import { FaceSnapsService } from '../services/face-snaps.service';
 })
 export class SingleFaceSnapComponent implements OnInit {
   faceSnap!: FaceSnap;
+  faceSnap$!: Observable<FaceSnap>;
 
   hasSnapped!: Boolean;
 
@@ -20,7 +22,7 @@ export class SingleFaceSnapComponent implements OnInit {
 
   ngOnInit(): void {
     const faceSnapId = +this.route.snapshot.params['id'];
-    this.faceSnap = this.faceSnapService.getFaceSnapById(faceSnapId);
+    this.faceSnap$ = this.faceSnapService.getFaceSnapById(faceSnapId);
   }
 
   onSnap(event: Event) {

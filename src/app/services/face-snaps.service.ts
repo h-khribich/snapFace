@@ -1,91 +1,29 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { FaceSnap } from '../models/face-snap-model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FaceSnapsService {
-  constructor(private router: Router) {}
+  constructor(private http: HttpClient) {}
 
-  faceSnaps: FaceSnap[] = [
-    {
-      id: 1,
-      title: 'Archibald',
-      description: 'Mon meilleur ami depuis tout petit !',
-      imageUrl:
-        'https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg',
-      createdDate: new Date(),
-      snaps: 120,
-      location: 'Paris',
-    },
-    {
-      id: 2,
-      title: 'Three Rock Mountain',
-      description: 'Un endroit magnifique pour les randonnées.',
-      imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Three_Rock_Mountain_Southern_Tor.jpg/2880px-Three_Rock_Mountain_Southern_Tor.jpg',
-      createdDate: new Date(),
-      snaps: 1346,
-      location: 'la montagne',
-    },
-    {
-      id: 3,
-      title: 'Un bon repas',
-      description: "Mmmh que c'est bon !",
-      imageUrl: 'https://wtop.com/wp-content/uploads/2020/06/HEALTHYFRESH.jpg',
-      createdDate: new Date(),
-      snaps: 190,
-    },
-    {
-      id: 4,
-      title: 'Archibald',
-      description: 'Mon meilleur ami depuis tout petit !',
-      imageUrl:
-        'https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg',
-      createdDate: new Date(),
-      snaps: 0,
-      location: 'Paris',
-    },
-    {
-      id: 5,
-      title: 'Three Rock Mountain',
-      description: 'Un endroit magnifique pour les randonnées.',
-      imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Three_Rock_Mountain_Southern_Tor.jpg/2880px-Three_Rock_Mountain_Southern_Tor.jpg',
-      createdDate: new Date(),
-      snaps: 6,
-      location: 'la montagne',
-    },
-    {
-      id: 6,
-      title: 'Un bon repas',
-      description: "Mmmh que c'est bon !",
-      imageUrl: 'https://wtop.com/wp-content/uploads/2020/06/HEALTHYFRESH.jpg',
-      createdDate: new Date(),
-      snaps: 0,
-    },
-  ];
+  faceSnaps!: FaceSnap[];
+  faceSnaps$!: Observable<FaceSnap[]>;
 
-  getAllFaceSnaps() {
-    return this.faceSnaps;
+  getAllFaceSnaps(): Observable<FaceSnap[]> {
+    return this.http.get<FaceSnap[]>('http://localhost:3000/facesnaps');
   }
 
-  getFaceSnapById(faceSnapId: number): FaceSnap {
-    const faceSnap = this.faceSnaps.find(
-      (faceSnap) => faceSnap.id === faceSnapId
+  getFaceSnapById(faceSnapId: number): Observable<FaceSnap> {
+    return this.http.get<FaceSnap>(
+      `http://localhost:3000/facesnaps/${faceSnapId}`
     );
-
-    if (!faceSnap) {
-      throw new Error('faceSnap not found!');
-    } else {
-      return faceSnap;
-    }
   }
 
   snapUnsnapById(faceSnapId: number, snapType: 'snap' | 'unsnap'): void {
-    const faceSnap = this.getFaceSnapById(faceSnapId);
-    snapType === 'snap' ? faceSnap.snaps++ : faceSnap.snaps--;
+    //
   }
 
   addNewSnapFace(formValue: {

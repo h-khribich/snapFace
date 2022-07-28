@@ -1,4 +1,8 @@
-<div class="face-snap-card" [ngClass]="{ snapped: hasSnapped }">
+<div
+  class="face-snap-card"
+  *ngIf="faceSnap$ | async as faceSnap"
+  [ngClass]="{ snapped: hasSnapped }"
+>
   <h2>{{ faceSnap.title | titlecase }}</h2>
   <p>Mis en ligne le {{ faceSnap.createdDate | date }}</p>
   <img [src]="faceSnap.imageUrl" [alt]="faceSnap.title" />
