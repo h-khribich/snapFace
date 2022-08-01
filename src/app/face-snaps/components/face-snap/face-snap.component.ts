@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Route, Router } from '@angular/router';
-import { FaceSnap } from '../models/face-snap-model';
-import { FaceSnapsService } from '../services/face-snaps.service';
+import { FaceSnap } from '../../../core/models/face-snap-model';
+import { FaceSnapsService } from '../../../core/services/face-snaps.service';
 
 @Component({
   selector: 'app-face-snap',
@@ -18,7 +18,7 @@ export class FaceSnapComponent {
     private router: Router
   ) {}
 
-  onSnap(event: Event) {
+  onSnap(event: Event, faceSnapId: number) {
     let btn = event.target as HTMLButtonElement;
 
     if (this.hasSnapped == true) {

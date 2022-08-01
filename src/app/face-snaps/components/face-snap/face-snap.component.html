@@ -9,7 +9,9 @@
   </div>
   <p class="face-snap-card-btns">
     <span>
-      <button class="snap-btn" (click)="onSnap($event)">Oh Snap!</button>
+      <button class="snap-btn" (click)="onSnap($event, faceSnap.id)">
+        Oh Snap!
+      </button>
       <span [ngStyle]="{ color: 'rgb(0,' + faceSnap.snaps + ',0)' }"
         >🤌 {{ faceSnap.snaps }}</span
       >
