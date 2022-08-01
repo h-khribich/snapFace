@@ -12,6 +12,6 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {}
 
   onAddNewFaceSnap(): void {
-    this.router.navigateByUrl('create');
+    this.router.navigateByUrl('facesnaps/create');
   }
 }

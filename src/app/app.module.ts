@@ -8,18 +8,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
 import { CoreModule } from './core/core.module';
-import { FaceSnapsModule } from './face-snaps/face-snaps.module';
 import { HomepageModule } from './homepage/homepage.module';
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent, AboutComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    CoreModule,
-    FaceSnapsModule,
-    HomepageModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, CoreModule, HomepageModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {
