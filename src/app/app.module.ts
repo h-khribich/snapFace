@@ -5,14 +5,19 @@ import * as fr from '@angular/common/locales/fr';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { AboutComponent } from './about/about.component';
 import { CoreModule } from './core/core.module';
 import { HomepageModule } from './homepage/homepage.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
-  declarations: [AppComponent, NotFoundComponent, AboutComponent],
-  imports: [BrowserModule, AppRoutingModule, CoreModule, HomepageModule],
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    CoreModule,
+    HomepageModule,
+    AuthModule,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {
